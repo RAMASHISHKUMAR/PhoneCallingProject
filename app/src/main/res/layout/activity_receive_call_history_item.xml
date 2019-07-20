@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activity.ReceiveCallHistoryItemActivity">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/historycardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#C72C2C"
+        app:contentPadding="@dimen/margin_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5">
+
+                <View
+                    android:id="@+id/lineView"
+                    android:layout_width="2dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorPrimaryDark"
+                    android:elevation="2dp"
+                    android:visibility="gone" />
+
+                <View
+                    android:id="@+id/lineViewWithMargin"
+                    android:layout_width="3dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="34dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:elevation="2dp" />
+
+                <TextView
+                    android:id="@+id/callnumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/ovel_shape"
+                    android:elevation="3dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/liner_Top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/color_video"
+                    android:orientation="vertical"
+                    android:paddingRight="40dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/call_Details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="4dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/liner_Top"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/call_details_design"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp">
+
+                            <ImageView
+                                android:id="@+id/caller_profile_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="2dp"
+                                android:src="@drawable/profile_image" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="1dp">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="0dp">
+
+                                <ImageView
+                                    android:id="@+id/outgoing_image_Icon"
+                                    android:layout_width="19dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="1dp"
+                                    android:background="@color/white"
+                                    android:src="@drawable/out_going_image" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="0dp">
+
+                                <ImageView
+                                    android:id="@+id/received_image_Icon"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="1dp"
+                                    android:background="@color/white"
+                                    android:src="@drawable/call_received_image" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="0dp">
+
+                                <ImageView
+                                    android:id="@+id/missedcall_image_Icon"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="1dp"
+                                    android:background="@color/white"
+                                    android:src="@drawable/call_missed_image" />
+                            </FrameLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/title_Contacs_Name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="start"
+                                    android:layout_marginLeft="5dp"
+                                    android:ellipsize="marquee"
+                                    android:ems="10"
+                                    android:maxLength="20"
+                                    android:padding="@dimen/margin_3"
+                                    android:singleLine="true"
+                                    android:text="Contact Name"
+                                    android:textColor="#313133"
+                                    android:textSize="14sp" />
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/title_Mobile_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:maxLength="13"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin_3"
+                                android:singleLine="true"
+                                android:text="Mobile No"
+                                android:textAllCaps="false"
+                                android:textColor="#313133"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/favorite_Image_icon"
+                                    android:layout_width="50dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="2dp"
+                                    android:src="@drawable/favorite_image_24dp" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/call_image_Icon"
+                                    android:layout_width="50dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="2dp"
+                                    android:src="@drawable/ic_phone_image" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/title_call_duration"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:inputType="time"
+                                android:maxLength="20"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin_3"
+                                android:singleLine="true"
+                                android:text="Call Duration"
+                                android:textColor="#313133"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/title_call_date"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:inputType="date"
+                                android:maxLength="20"
+                                android:maxLines="1"
+                                android:padding="@dimen/margin_3"
+                                android:singleLine="true"
+                                android:text="Call Date"
+                                android:textColor="#313133"
+                                android:textSize="14sp" />
+
+                            <!--      <FrameLayout
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content">
+
+                                       <ImageView
+                                           android:id="@+id/outgoing_call_image"
+                                           android:layout_width="32dp"
+                                           android:layout_height="24dp"
+                                           android:layout_gravity="center"
+                                           android:layout_margin="2dp"
+                                           android:src="@drawable/out_going_image"/>
+                                   </FrameLayout>
+
+                                   <FrameLayout
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content">
+
+                                       <ImageView
+                                           android:id="@+id/received_call_image"
+                                           android:layout_width="32dp"
+                                           android:layout_height="20dp"
+                                           android:layout_gravity="center"
+                                           android:layout_margin="2dp"
+                                           android:src="@drawable/call_received_image"/>
+                                   </FrameLayout>
+
+                                   <FrameLayout
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content">
+
+                                       <ImageView
+                                           android:id="@+id/missed_call_image"
+                                           android:layout_width="32dp"
+                                           android:layout_height="20dp"
+                                           android:layout_gravity="center"
+                                           android:layout_margin="2dp"
+                                           android:src="@drawable/call_missed_image"/>
+                                   </FrameLayout> -->
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
