@@ -38,6 +38,7 @@ Context context;
     public void outGoingIncomingCallDetection(Intent intent) {
 
             String phoneNumber = intent.getStringExtra("incoming_number");
+        Toast.makeText(context, "hi u r calling me", Toast.LENGTH_SHORT).show();
             CallHistory callHistory = new CallHistory();
             callHistory.setMobile_no(phoneNumber);
             callHistory.setContacs_Name(getNameFromContact(phoneNumber));
