@@ -26,7 +26,7 @@ public  class PhoneReceiver extends BroadcastReceiver {
 
     String TAG = PhoneReceiver.class.getSimpleName();
     String incoming_number = "";
-Context context;
+    Context context;
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;

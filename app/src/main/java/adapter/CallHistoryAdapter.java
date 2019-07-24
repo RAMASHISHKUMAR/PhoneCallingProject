@@ -48,6 +48,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
           // myViewHolder.mobile_no.setText(callHistories.get(i).getMobile_no());
            myViewHolder.mobile_no.setText(callHistory.getMobile_no());
            myViewHolder.contacts_Name.setText(callHistory.getContacs_Name());
+           myViewHolder.call_date.setText(callHistory.getCall_date());
 
     }
 
@@ -67,8 +68,8 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             contacts_Name = itemView.findViewById(R.id.title_Contacs_Name);
             mobile_no = itemView.findViewById(R.id.title_Mobile_no);
             call_duration = itemView.findViewById(R.id.title_call_duration);
-            call_date = itemView.findViewById(R.id.title_call_date);
 
+            //call_date = itemView.findViewById(R.id.title_call_date);
             /*  favorite_Image = itemView.findViewById(R.id.favorite_Image_icon);
             calling_image = itemView.findViewById(R.id.call_image_Icon);
             outgoing_image = itemView.findViewById(R.id.outgoing_image_Icon);
