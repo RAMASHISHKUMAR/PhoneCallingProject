@@ -2,7 +2,8 @@ package activity;
 
 import android.app.Application;
 
-import io.realm.BuildConfig;
+import com.phonecallingproject.BuildConfig;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 

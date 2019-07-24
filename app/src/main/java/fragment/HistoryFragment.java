@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import android.widget.Adapter;
 
 import com.phonecallingproject.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import adapter.CallHistoryAdapter;
+import databasehelper.RealmDatabaseHelper;
 import modelclass.CallHistory;
 
 import static android.support.v7.widget.LinearLayoutManager.*;
@@ -27,6 +30,11 @@ public class HistoryFragment extends Fragment {
     CardView cardView;
 
     List<CallHistory> callHistoryList;
+
+    private CallHistoryAdapter callHistoryAdapter;
+
+    List<CallHistory> callHistories = new ArrayList<>();
+
 
 
     public HistoryFragment() {
@@ -46,7 +54,9 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_receive_call_history_item, container, false);
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
+      recyclerView =  view.findViewById(R.id.history_RecyclerView);
+      return view;
     }
 
 
@@ -54,6 +64,7 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
 
     }
 
@@ -66,5 +77,23 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+      showCallHistoryDetails();   // Implements recycler
+
     }
+    public void showCallHistoryDetails(){
+        callHistories = RealmDatabaseHelper.getAllCallHistorey();
+        if (callHistories!=null && callHistories.size()>0){
+            Log.d("Data Size ",""+callHistoryList.size());
+            callHistoryAdapter = new CallHistoryAdapter(getActivity(),callHistoryList);
+
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(mLayoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(callHistoryAdapter);
+        }
+
+    }
+
+
 }

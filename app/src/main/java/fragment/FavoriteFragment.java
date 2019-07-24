@@ -14,7 +14,7 @@ import com.phonecallingproject.R;
 public class FavoriteFragment extends Fragment {
 
 
-
+    private Object recyclerView;
 
     public FavoriteFragment() {
         // Required empty public constructor
@@ -34,7 +34,9 @@ public class FavoriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false);
+        View view =  inflater.inflate(R.layout.fragment_favorite, container, false);
+        recyclerView =  view.findViewById(R.id.favorite_RecyclerView);
+        return view;
     }
 
 
@@ -47,7 +49,10 @@ public class FavoriteFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-
+        showCallFavoriteDetails();
     }
 
+    public void showCallFavoriteDetails(){
+
+    }
 }

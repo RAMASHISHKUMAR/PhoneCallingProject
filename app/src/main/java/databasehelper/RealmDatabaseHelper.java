@@ -3,13 +3,15 @@ package databasehelper;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.telecom.Call;
 
 import io.realm.Realm;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 import modelclass.CallHistory;
 
-public class RealmDatabaseHelper{
-        private void saveCallDetailInRealm(final  CallHistory callHistory) {
+public class RealmDatabaseHelper  {
+        public  static void saveCallDetailInRealm(final  CallHistory callHistory) {
             Realm realm = Realm.getDefaultInstance();
             RealmResults<CallHistory> callHistory1 = realm.where(CallHistory.class).equalTo("Mobile_no",callHistory.getMobile_no()).findAll();
             if (callHistory!=null && callHistory1.size()>0){
@@ -30,6 +32,9 @@ public class RealmDatabaseHelper{
 
         }
 
-
-
+    public static  RealmResults<CallHistory>  getAllCallHistorey() {
+            Realm realm = Realm.getDefaultInstance();
+        RealmResults<CallHistory> callhistory = realm.where(CallHistory.class).findAll();
+        return callhistory;
+    }
 }
