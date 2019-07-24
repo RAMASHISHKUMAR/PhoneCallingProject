@@ -18,8 +18,6 @@ public class PhoneReceiver extends BroadcastReceiver {
 
     String TAG = PhoneReceiver.class.getSimpleName();
 
-    boolean incomingFlag = false;
-    boolean isRecieved = false;
 
     @Override
     public void onReceive(Context context, Intent intent) {
