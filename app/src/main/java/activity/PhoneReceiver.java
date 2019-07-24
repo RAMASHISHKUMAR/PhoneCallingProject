@@ -33,11 +33,11 @@ public  class PhoneReceiver extends BroadcastReceiver {
         outGoingIncomingCallDetection(intent);
     }
 
-    // Incoming and Out going  call Detection
-
+    // Incoming and Out going  call Detectionsss
     public void outGoingIncomingCallDetection(Intent intent) {
 
             String phoneNumber = intent.getStringExtra("incoming_number");
+
             CallHistory callHistory = new CallHistory();
             callHistory.setMobile_no(phoneNumber);
             callHistory.setContacs_Name(getNameFromContact(phoneNumber));
