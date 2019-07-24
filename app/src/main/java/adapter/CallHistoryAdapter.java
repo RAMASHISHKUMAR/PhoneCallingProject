@@ -48,7 +48,7 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
           // myViewHolder.mobile_no.setText(callHistories.get(i).getMobile_no());
            myViewHolder.mobile_no.setText(callHistory.getMobile_no());
            myViewHolder.contacts_Name.setText(callHistory.getContacs_Name());
-           myViewHolder.call_date.setText(callHistory.getCall_date());
+         //  myViewHolder.call_date.setText(callHistory.getCall_date());
 
     }
 
