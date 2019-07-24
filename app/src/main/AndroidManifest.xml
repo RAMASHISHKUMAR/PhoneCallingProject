@@ -22,9 +22,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activity.ReceiveCallHistoryItemActivity"></activity>
-        <activity android:name="activity.ContactsItemActivity"></activity>
-        <activity android:name="activity.FavoriteItemActivity" />
         <activity android:name="activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +30,7 @@
             </intent-filter>
         </activity>
 
+        <!--suppress AndroidDomInspection -->
         <receiver android:name="activity.PhoneReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE"/>

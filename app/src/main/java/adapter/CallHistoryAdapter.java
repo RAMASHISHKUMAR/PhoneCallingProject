@@ -3,6 +3,7 @@ package adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import java.util.zip.Inflater;
 import fragment.HistoryFragment;
 import modelclass.CallHistory;
 
+import static android.os.Build.VERSION_CODES.M;
+
 public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.MyViewHolder> {
     Context context;
     List<CallHistory>callHistories;
@@ -25,6 +28,8 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
         this.context = context;
         this.callHistories = callHistories;
     }
+
+
     @NonNull
     @Override
     public CallHistoryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -37,16 +42,18 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
     @Override
     public void onBindViewHolder(@NonNull CallHistoryAdapter.MyViewHolder myViewHolder, int i) {
 
-       /*  CallHistory callHistory = callHistories.get(i);
-         myViewHolder.Contacts_Name.setText(CallHistory);
-      */
+         CallHistory callHistory = callHistories.get(i);
 
+
+          // myViewHolder.mobile_no.setText(callHistories.get(i).getMobile_no());
+           myViewHolder.mobile_no.setText(callHistory.getMobile_no());
+           myViewHolder.contacts_Name.setText(callHistory.getContacs_Name());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return callHistories.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -62,12 +69,12 @@ public class CallHistoryAdapter extends RecyclerView.Adapter<CallHistoryAdapter.
             call_duration = itemView.findViewById(R.id.title_call_duration);
             call_date = itemView.findViewById(R.id.title_call_date);
 
-            favorite_Image = itemView.findViewById(R.id.favorite_Image_icon);
+            /*  favorite_Image = itemView.findViewById(R.id.favorite_Image_icon);
             calling_image = itemView.findViewById(R.id.call_image_Icon);
             outgoing_image = itemView.findViewById(R.id.outgoing_image_Icon);
             received_image = itemView.findViewById(R.id.received_image_Icon);
             missedcall_image = itemView.findViewById(R.id.missedcall_image_Icon);
-            caller_profile_image = itemView.findViewById(R.id.caller_profile_image);
+            caller_profile_image = itemView.findViewById(R.id.caller_profile_image); */
 
         }
     }

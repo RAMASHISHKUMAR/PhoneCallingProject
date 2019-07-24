@@ -4,78 +4,66 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import databasehelper.RealmDatabaseHelper;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import modelclass.CallHistory;
 
-public class PhoneReceiver extends BroadcastReceiver {
+public  class PhoneReceiver extends BroadcastReceiver {
 
     String TAG = PhoneReceiver.class.getSimpleName();
-
-
+    String incoming_number = "";
+Context context;
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        if (intent.getAction().equals(Intent.ACTION_NEW_OUTGOING_CALL)) {
-
-            String phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
-
-            Toast.makeText(context, "OutGoing Call" + phoneNumber, Toast.LENGTH_LONG).show();
-            // saveCallDetailInRealm();
-
-        } else {
-            String incoming_number = "";
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Service.TELEPHONY_SERVICE);
-            switch (tm.getCallState()) {
-                case TelephonyManager.CALL_STATE_RINGING:
-
-                    incoming_number = intent.getStringExtra("incoming_number");
-
-
-                    Toast.makeText(context, "Hi you are calling me from " + incoming_number, Toast.LENGTH_LONG).show();
-                    break;
-
-                case TelephonyManager.CALL_STATE_OFFHOOK:
-                    isRecieved = true;
-                    Toast.makeText(context, "incoming ACCEPT :" + incoming_number, Toast.LENGTH_LONG).show();
-                    break;
-
-                case TelephonyManager.CALL_STATE_IDLE:
-                    Toast.makeText(context, "Call Disconnected :" + incoming_number, Toast.LENGTH_LONG).show();
-
-                    break;
-            }
-
-        }
-
+        this.context = context;
+        outGoingIncomingCallDetection(intent);
     }
-  /*
-    private void saveCallDetailInRealm(final CallHistory callHistory) {
-        Realm realm = Realm.getDefaultInstance();
-        RealmResults<CallHistory> callHistory1 = realm.where(CallHistory.class).equalTo("Mobile_no",callHistory.getMobile_no()).findAll();
-        if (callHistory!=null && callHistory1.size()>0){
-            final CallHistory callHistoryOld = callHistory1.first();
 
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    callHistoryOld.setContacs_Name(callHistory.getContacs_Name());
-                }
-            });
-        }else{
-            realm.beginTransaction();
-            realm.copyToRealmOrUpdate(callHistory);
-            realm.commitTransaction();
+    // Incoming and Out going  call Detection
+
+    public void outGoingIncomingCallDetection(Intent intent) {
+
+            String phoneNumber = intent.getStringExtra("incoming_number");
+            CallHistory callHistory = new CallHistory();
+            callHistory.setMobile_no(phoneNumber);
+            callHistory.setContacs_Name(getNameFromContact(phoneNumber));
+            // callHistory.setCall_duration();
+            RealmDatabaseHelper.saveCallDetailInRealm(callHistory);
+    }
+
+    private String getNameFromContact(String phoneNumber) {
+        String contactName ="Not Found";
+        Uri uri=Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,Uri.encode(phoneNumber));
+
+        String[] projection = new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME};
+
+        Cursor cursor=context.getContentResolver().query(uri,projection,null,null,null);
+
+        if (cursor != null) {
+            if(cursor.moveToFirst()) {
+                contactName=cursor.getString(0);
+            }
+            cursor.close();
         }
 
+       return contactName;
+    }
 
-    }*/
-
+    /* -------------------*/
+    // missed call Detection
 
 }

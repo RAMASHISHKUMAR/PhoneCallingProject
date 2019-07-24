@@ -3,12 +3,32 @@ package modelclass;
 import android.provider.MediaStore;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Index;
+import io.realm.annotations.PrimaryKey;
 
 public class Contacts extends RealmObject {
 
-    private String name,mob_no;
-    private MediaStore.Images image,isfavorite;
 
+    @PrimaryKey
+    private String id;
+    @Index
+    private String name;
+
+    @Index
+    private String number;
+
+    @Index
+    private boolean isBeingSaved;
+
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -18,41 +38,32 @@ public class Contacts extends RealmObject {
         this.name = name;
     }
 
-    public String getMob_no() {
-        return mob_no;
+    public String getNumber() {
+        return number;
     }
 
-    public void setMob_no(String mob_no) {
-        this.mob_no = mob_no;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public MediaStore.Images getImage() {
-        return image;
+    public boolean isBeingSaved() {
+        return isBeingSaved;
     }
 
-    public void setImage(MediaStore.Images image) {
-        this.image = image;
+    public void setBeingSaved(boolean beingSaved) {
+        isBeingSaved = beingSaved;
     }
-
-    public MediaStore.Images getIsfavorite() {
-        return isfavorite;
+    public void setIsBeingSaved(boolean b) {
     }
-
-    public void setIsfavorite(MediaStore.Images isfavorite) {
-        this.isfavorite = isfavorite;
-    }
-
-
 
     @Override
     public String toString() {
         return "Contacts{" +
-                "name='" + name + '\'' +
-                ", mob_no='" + mob_no + '\'' +
-                ", image=" + image +
-                ", isfavorite=" + isfavorite +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                ", isBeingSaved=" + isBeingSaved +
                 '}';
     }
-
 
 }
